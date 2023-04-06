@@ -55,6 +55,19 @@
 			SCL pin 5
 			SDA pin 3
 		
+			sudo raspi-config -> interface options enable I2C interface y reboot
+
+	sudo apt install -y python3-dev
+	sudo apt install -y i2c-tools
+	sudo apt install -y python3-pil
+	sudo apt install -y python3-pip
+	sudo apt install -y python3-setuptools
+	sudo apt install -y python3-rpi.gpio
+	pip3 install Adafruit_GPIO
+	pip3 install Adafruit_SSD1306
+
+	i2cdetect -y 1
+		
 	Comandos para instalar libreriás
 		apt install git
 		python -m pip install --upgrade pip setuptools wheel
