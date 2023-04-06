@@ -24,6 +24,8 @@
 	
 	dpkg -i zeek_5.1.1_armhf.deb
 	
+	ethtool -K eth0 gro off rx off tx off gso off
+	
 5. Instalacion de af_packet en Zeek
 	apt install python3-venv python3-pip
 	pip3 install GitPython semantic-version --user
