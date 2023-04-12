@@ -162,16 +162,17 @@ def spoof(host, gateway):
     time.sleep(10)
 
 def still_up_host(ip):
-    
-  # opening a text file
-  file = open("/usr/local/zeek/logs/current/open_conn.log", "r")
+  
+  try:
+   # opening a text file
+   file = open("/usr/local/zeek/logs/current/open_conn.log", "r")
 
-  # setting flag and index to 0
-  flag = 0
-  index = 0
+   # setting flag and index to 0
+   flag = 0
+   index = 0
 
-  # Loop through the file line by line
-  for line in file:
+   # Loop through the file line by line
+   for line in file:
     index =index+1
     # checking string is present in line or not
     if ip in line:
@@ -179,16 +180,24 @@ def still_up_host(ip):
       break
 
   # checking condition for string found or not
-  if flag == 0:
+   if flag == 0:
     #print('String', ip , 'Not Found')
     return False
-  else:
+   else:
     #print('String', ip, 'Found In Line', index)
     return True
 
-  # closing text file
-  file.close()
-        
+   # closing text file
+   file.close()
+   
+  except:
+    with open(file_log, "a") as f:
+      data = {"Error": "Not /usr/local/zeek/logs/current/open_conn.log found" }
+      json.dump(data, f)
+      f.write("\n")
+    f.close()
+   
+          
 
 if __name__ == "__main__":
 
