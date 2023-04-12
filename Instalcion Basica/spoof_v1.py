@@ -191,11 +191,12 @@ def still_up_host(ip):
    file.close()
    
   except:
-    with open(file_log, "a") as f:
-      data = {"Error": "Not /usr/local/zeek/logs/current/open_conn.log found" }
+    with open( "/home/pi/spoof_log/"+datetime.datetime.now().strftime("%Y_%m_%d-%H:%M:%S")+".log", "a") as f:
+      data = {"Timestamp": datetime.datetime.now().strftime("%Y_%m_%d-%H:%M:%S"), "Error": "Not /usr/local/zeek/logs/current/open_conn.log found" }
       json.dump(data, f)
       f.write("\n")
     f.close()
+   
    
           
 
